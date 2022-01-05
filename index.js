@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const mysql = require('mysql')
-
+const port = process.env.PORT || 5000
 const app = express()
 const SELECT_ALL_Pt_QUERY = 'SELECT * FROM pt'
 //db connection
@@ -52,6 +52,6 @@ app.get ('/api/pts', (req, res) => {
         }
     })
 }) // local host:5000 -> predeploy will use Heroku
-app.listen(5000, () =>{
+app.listen(port, () =>{
     console.log('Server is running ...')
 })

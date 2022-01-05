@@ -1,14 +1,11 @@
 const express = require('express')
 const cors = require('cors')
-const mysql = require('mysql')
+
 const port = process.env.PORT || 5000
 const app = express()
 const SELECT_ALL_Pt_QUERY = 'SELECT * FROM pt'
 //db connection
-var connection = mysql.createConnection({
-    // disable FOUND_ROWS flag, enable IGNORE_SPACE flag
-    flags: '-FOUND_ROWS,IGNORE_SPACE'
-  });
+
 var mysql = require('mysql');
 var pool  = mysql.createPool({
     connectionLimit : 10,
@@ -31,11 +28,8 @@ connection.connect(err =>{
     }
 })
 pool.on('enqueue', function () {
-    console.log('Waiting for available connection slot');
-  });
-  pool.on('release', function (connection) {
-    console.log('Connection %d released', connection.threadId);
-  });
+  console.log('Waiting for available connection slot');
+});
 connection.end(function(err) {
     // The connection is terminated now
   });

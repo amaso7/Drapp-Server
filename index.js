@@ -27,9 +27,7 @@ connection.connect(err =>{
         return err
     }
 })
-pool.on('enqueue', function () {
-  console.log('Waiting for available connection slot');
-});
+
 connection.end(function(err) {
     // The connection is terminated now
   });

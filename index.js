@@ -4,7 +4,7 @@ const mysql = require('mysql')
 
 const app = express()
 const SELECT_ALL_Pt_QUERY = 'SELECT * FROM pt'
-
+//db connection
 const connection = mysql.createConnection({
     host: "localhost",
     database: "mydb",
@@ -21,13 +21,13 @@ connection.connect(err =>{
 
 
 app.use(cors())
-
+// ('/') home
 app.get('/', (req, res)=> {
     res.send('hello welcome please')
 })
 
 
-
+//instead of using post method 
 app.get('/api/pts/add', (req, res) => {
     const {firstname, lastname, dob, provider, prevappt, nextappt, meds, num, msg} = req.query
     const INSERT_Pt_QUERY = `INSERT INTO pt (firstname, lastname, dob, provider, prevappt, nextappt, meds, num, msg) VALUES('${firstname}', '${lastname}', '${dob}', '${provider}', '${prevappt}', '${nextappt}', '${meds}', '${num}', '${msg}')`
@@ -39,7 +39,7 @@ app.get('/api/pts/add', (req, res) => {
             return res.send('Message sent!')
         }
     })
-})   
+})   // creates api from db as JSON
 app.get ('/api/pts', (req, res) => {
     connection.query(SELECT_ALL_Pt_QUERY, (err, results) => {
         if(err){
@@ -51,7 +51,7 @@ app.get ('/api/pts', (req, res) => {
             })
         }
     })
-})
+}) // local host:5000 -> predeploy will use Heroku
 app.listen(5000, () =>{
     console.log('Server is running ...')
 })

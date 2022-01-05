@@ -23,7 +23,7 @@ connection.connect(err =>{
 app.use(cors())
 // ('/') home
 app.get('/', (req, res)=> {
-    res.send('hello welcome please')
+    res.send('Server is running...')
 })
 
 

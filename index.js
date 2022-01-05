@@ -1,36 +1,24 @@
 const express = require('express')
 const cors = require('cors')
-
+const mysql = require('mysql')
 const port = process.env.PORT || 5000
 const app = express()
 const SELECT_ALL_Pt_QUERY = 'SELECT * FROM pt'
 //db connection
-
-var mysql = require('mysql');
-var pool  = mysql.createPool({
-    connectionLimit : 10,
+const connection = mysql.createConnection({
     host: "localhost",
     database: "mydb",
     user: "saadh",
     password: "A11db2231*$"
-  });
-  
-  pool.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
-    if (error) throw error;
-    console.log('The solution is: ', results[0].solution);
-  });
-  pool.on('acquire', function (connection) {
-    console.log('Connection %d acquired', connection.threadId);
-  });
+    
+})
+
 connection.connect(err =>{
     if(err){
         return err
     }
 })
 
-connection.end(function(err) {
-    // The connection is terminated now
-  });
 
 app.use(cors())
 // ('/') home

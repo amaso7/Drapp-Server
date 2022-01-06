@@ -6,12 +6,11 @@ const app = express()
 const SELECT_ALL_Pt_QUERY = 'SELECT * FROM pt'
 //db connection
 const connection = mysql.createConnection({
-    host: "us-cdbr-east-05.cleardb.net",
-    database: "mydb",
-    user: "bc69df8df5be59",
-    password: "67614c24"
-    
-})
+  host: process.env.DATABASE_HOST,
+  user: process.env.DATABASE_USER,
+  password: process.env.DATABASE_PASSWORD,
+  database: process.env.DATABASE
+});
 
 connection.connect(err =>{
     if(err){

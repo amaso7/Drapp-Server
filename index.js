@@ -29,7 +29,7 @@ app.get('/', (req, res)=> {
 //instead of using post method 
 app.get('/pts/add', (req, res) => {
     const {firstname, lastname, dob, provider, prevappt, nextappt, meds, num, msg} = req.query
-    const INSERT_Pt_QUERY = `INSERT INTO pt (firstname, lastname, dob, provider, prevappt, nextappt, meds, num, msg) VALUES('${firstname}', '${lastname}', '${dob}', '${provider}', '${prevappt}', '${nextappt}', '${meds}', '${num}', '${msg}')`
+    const INSERT_Pt_QUERY = `INSERT INTO heroku_da43e4b976c21c8.pts (firstname, lastname, dob, provider, prevappt, nextappt, meds, num, msg) VALUES('${firstname}', '${lastname}', '${dob}', '${provider}', '${prevappt}', '${nextappt}', '${meds}', '${num}', '${msg}')`
     connection.query(INSERT_Pt_QUERY, (err, results) => {
         if (err) {
             return res.send(err)

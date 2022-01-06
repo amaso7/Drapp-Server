@@ -50,7 +50,14 @@ app.get ('/api/pts', (req, res) => {
             })
         }
     })
-}) // local host:5000 -> predeploy will use Heroku
+}) // condition for production
+if (process.env.NODE_ENV === "production"){
+    app.use(express.static("build"));
+    app.get("*", (req, res) => {
+      res.sendFile(path.resolve(__dirname,  "build", "index.html"));
+    });
+  }
+// local host:5000 -> predeploy will use Heroku
 app.listen(port, () =>{
     console.log('Server is running ...')
 })

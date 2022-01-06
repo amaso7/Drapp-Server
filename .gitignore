@@ -8,8 +8,7 @@
 # testing
 /coverage
 
-# production
-/build
+
 
 # Nuxt.js build / generate output
 .nuxt

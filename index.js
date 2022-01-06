@@ -39,8 +39,8 @@ app.get('/pts/add', (req, res) => {
         }
     })
 })   // creates api from db as JSON
-app.get ('/api/pts', (req, res) => {
-    connection.query(SELECT_ALL_Pt_QUERY, (err, results) => {
+//app.get ('/api/pts', (req, res) => {
+    connection.query('/api/pts',SELECT_ALL_Pt_QUERY, (err, results) => {
         if(err){
             return res.send(err)
         }
@@ -50,14 +50,14 @@ app.get ('/api/pts', (req, res) => {
             })
         }
     })
-}) // condition for production
+//}) // condition for production
 if (process.env.NODE_ENV === "production"){
     app.use(express.static("build"));
     app.get("*", (req, res) => {
       res.sendFile(path.resolve(__dirname,  "build", "index.html"));
     });
   }
-// local host:5000 -> predeploy will use Heroku
+// local host:5000 -> predeploy use Heroku https://powerful-stream-34454.herokuapp.com
 app.listen(port, () =>{
     console.log('Server is running ...')
 })

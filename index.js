@@ -6,10 +6,10 @@ const app = express()
 const SELECT_ALL_Pt_QUERY = 'SELECT * FROM pt'
 //db connection
 const connection = mysql.createConnection({
-    host: "localhost",
+    host: "us-cdbr-east-05.cleardb.net",
     database: "mydb",
-    user: "saadh",
-    password: "A11db2231*$"
+    user: "bc69df8df5be59",
+    password: "67614c24"
     
 })
 

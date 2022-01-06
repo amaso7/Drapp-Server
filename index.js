@@ -40,7 +40,7 @@ app.get('/pts/add', (req, res) => {
     })
 })   // creates api from db as JSON
 app.get ('/api/pts', (req, res) => {
-    connection.query(SELECT_ALL_heroku_da43e4b976c21c8.pts_QUERY, (err, results) => {
+    connection.query(SELECT_ALL_Pt_QUERY, (err, results) => {
         if(err){
             return res.send(err)
         }

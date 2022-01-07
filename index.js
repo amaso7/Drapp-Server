@@ -17,9 +17,11 @@ const connection = mysql.createConnection({
   database: process.env.DATABASE
 });
 
-connection.connect();
-
-connection.end();
+connection.connect(err =>{
+    if(err){
+        return err
+    }
+})
 
 
 
@@ -42,7 +44,7 @@ app.get('/pts/add', (req, res) => {
         }
     })
 })   // creates api from db as JSON
-app.get ('/api/pts', (req, res) => {
+app.get ('https://powerful-stream-34454.herokuapp.com/api/pts', (req, res) => {
     connection.query(SELECT_ALL_Pt_QUERY, (err, results) => {
         if(err){
             return res.send(err)

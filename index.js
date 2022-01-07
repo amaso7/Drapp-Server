@@ -1,6 +1,6 @@
 const express = require('express')
 const cors = require('cors')
-const mysql = require('mysql')
+
 const port = process.env.PORT || 5000
 const app = express()
 const SELECT_ALL_Pt_QUERY = 'SELECT * FROM heroku_da43e4b976c21c8.pts'

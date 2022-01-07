@@ -1,12 +1,16 @@
+const dotenv = require('dotenv')
+require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const mysql = require('mysql')
 const port = process.env.PORT || 5000
 const app = express()
 const SELECT_ALL_Pt_QUERY = 'SELECT * FROM heroku_da43e4b976c21c8.pts'
+
 //db connection
 app.use(cors())
-const connection = mysql.createPoolCluster({
+//db connection
+const connection = mysql.createConnection({
   host: process.env.DATABASE_HOST,
   user: process.env.DATABASE_USER,
   password: process.env.DATABASE_PASSWORD,

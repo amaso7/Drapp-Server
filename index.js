@@ -1,13 +1,13 @@
-const dotenv = require('dotenv')
+
 require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const mysql = require('mysql')
-const PORT = process.env.PORT || 5000
+const port = process.env.PORT || 5000
 const app = express()
 const SELECT_ALL_Pt_QUERY = 'SELECT * FROM heroku_da43e4b976c21c8.pts'
 
-
+//db connection
 app.use(cors())
 //db connection
 const connection = mysql.createConnection({
@@ -63,6 +63,6 @@ if (process.env.NODE_ENV === "production"){
     });
   }
 // local host:5000 -> predeploy use Heroku https://powerful-stream-34454.herokuapp.com
-app.listen(PORT, () =>{
+app.listen(port, () =>{
     console.log('Server is running ...')
 })

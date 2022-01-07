@@ -4,8 +4,8 @@ const mysql = require('mysql')
 const port = process.env.PORT || 5000
 const app = express()
 const SELECT_ALL_Pt_QUERY = 'SELECT * FROM heroku_da43e4b976c21c8.pts'
-app.use(cors())
 //db connection
+app.use(cors())
 const connection = mysql.createConnection({
   host: process.env.DATABASE_HOST,
   user: process.env.DATABASE_USER,
@@ -13,14 +13,12 @@ const connection = mysql.createConnection({
   database: process.env.DATABASE
 });
 
-connection.connect(function (err){
-    if (err) throw err
-    console.log("connected")
-    connection.query('SELECT_ALL_Pt_QUERY', (err,results)=>{
-        if (err) throw err
-        console.log(results)
-    })
+connection.connect(err =>{
+    if(err){
+        return err
+    }
 })
+
 
 
 // ('/') home

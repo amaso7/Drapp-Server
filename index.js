@@ -6,7 +6,7 @@ const app = express()
 const SELECT_ALL_Pt_QUERY = 'SELECT * FROM heroku_da43e4b976c21c8.pts'
 //db connection
 app.use(cors())
-const connection = mysql.createPool({
+const connection = mysql.createPool()({
   host: process.env.DATABASE_HOST,
   user: process.env.DATABASE_USER,
   password: process.env.DATABASE_PASSWORD,

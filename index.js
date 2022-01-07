@@ -19,7 +19,7 @@ const connection = mysql.createConnection({
 
 connection.connect();
 
-connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
+connection.query('SELECT 1 + 1 AS solution', function (error, results) {
   if (error) throw error;
   console.log('The solution is: ', results[0].solution);
 });

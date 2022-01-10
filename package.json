@@ -2,12 +2,12 @@
   "name": "nodeappserver",
   "version": "1.0.0",
   "engines": {
-    "node": "14.x"
+    "node": "14.17.3"
   },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
+    "start": "npm start",
     "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [],
@@ -15,6 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "heroku": "^7.59.2",
     "mysql": "^2.18.1",

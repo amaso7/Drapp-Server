@@ -7,9 +7,10 @@ const port = process.env.PORT || 5000
 const app = express()
 const SELECT_ALL_Pt_QUERY = 'SELECT * FROM heroku_da43e4b976c21c8.pts'
 
+//db connection
 app.use(cors())
 //db connection
-try {const connection = mysql.createConnection({
+const connection = mysql.createConnection({
   host: process.env.DATABASE_HOST,
   user: process.env.DATABASE_USER,
   password: process.env.DATABASE_PASSWORD,
@@ -21,10 +22,8 @@ connection.connect(err =>{
         return err
     }
 })
-}
-catch(err) {
-  console.log(err)
-} 
+
+
 
 // ('/') home
 app.get('/', (req, res)=> {
@@ -33,7 +32,7 @@ app.get('/', (req, res)=> {
 
 
 //instead of using post method 
-app.get('https://powerful-stream-34454.herokuapp.com/pts/add', (req, res) => {
+app.get('/pts/add', (req, res) => {
     const {firstname, lastname, dob, provider, prevappt, nextappt, meds, num, msg} = req.query
     const INSERT_Pt_QUERY = `INSERT INTO heroku_da43e4b976c21c8.pts (firstname, lastname, dob, provider, prevappt, nextappt, meds, num, msg) VALUES('${firstname}', '${lastname}', '${dob}', '${provider}', '${prevappt}', '${nextappt}', '${meds}', '${num}', '${msg}')`
     connection.query(INSERT_Pt_QUERY, (err, results) => {
@@ -45,7 +44,7 @@ app.get('https://powerful-stream-34454.herokuapp.com/pts/add', (req, res) => {
         }
     })
 })   // creates api from db as JSON
-app.get ('https://powerful-stream-34454.herokuapp.com/api/pts', (req, res) => {
+app.get ('/api/pts', (req, res) => {
     connection.query(SELECT_ALL_Pt_QUERY, (err, results) => {
         if(err){
             return res.send(err)
@@ -63,7 +62,7 @@ if (process.env.NODE_ENV === "production"){
       res.sendFile(path.resolve(__dirname,  "build", "index.html"));
     });
   }
-// local host:5000 -> predeploy use Heroku https://powerful-stream-34454.herokuapp.com
+// local host:5000 ->  use Heroku https://powerful-stream-34454.herokuapp.com
 app.listen(port, () =>{
     console.log('Server is running ...')
 })

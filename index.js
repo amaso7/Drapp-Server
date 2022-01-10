@@ -17,11 +17,7 @@ const connection = mysql.createConnection({
   database: process.env.DATABASE
 });
 
-connection.connect(err =>{
-    if(err){
-        return err
-    }
-})
+
 
 
 

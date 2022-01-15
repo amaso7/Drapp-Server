@@ -17,7 +17,11 @@ const connection = mysql.createConnection({
   database: process.env.DATABASE
 });
 
-
+connection.connect(err =>{
+    if(err){
+        return err
+    }
+})
 
 
 
@@ -58,7 +62,7 @@ if (process.env.NODE_ENV === "production"){
       res.sendFile(path.resolve(__dirname,  "build", "index.html"));
     });
   }
-// local host:5000 ->  use Heroku https://powerful-stream-34454.herokuapp.com
+// local host:5000 -> predeploy use Heroku https://powerful-stream-34454.herokuapp.com
 app.listen(port, () =>{
     console.log('Server is running ...')
 })

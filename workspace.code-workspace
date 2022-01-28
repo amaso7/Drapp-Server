@@ -1,0 +1,27 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "..\\Dr. App Week 13 project\\Individual-project--Digitatl-crafts-Week-13\\server2\\models"
+		}
+	],
+	"settings": {
+		"sqltools.connections": [
+			{
+				"mysqlOptions": {
+					"authProtocol": "default"
+				},
+				"previewLimit": 50,
+				"server": "us-cdbr-east-05.cleardb.net",
+				"port": 3306,
+				"driver": "MySQL",
+				"name": "nodeappserver",
+				"database": "heroku_da43e4b976c21c8",
+				"username": "bc69df8df5be59",
+				"password": "67614c24"
+			}
+		]
+	}
+}
